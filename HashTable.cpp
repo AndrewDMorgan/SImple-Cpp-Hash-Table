@@ -21,25 +21,20 @@ class HashTable
         {
             // getting the first two and last two chars
             int length = string.length() - 1;
-            char first = string[0];
-            char second = string[1];
-            char secondLast = string[length - 1];
-            char last = string[length];
+            short first = string[0];
+            short second = string[1];
+            short secondLast = string[length - 1];
+            short last = string[length];
             
             // adding the values together
-            int hashIndex = (int(first)) + (int(second) << 7) + (int(secondLast) << 14) + (int(last) << 21);
-            
+            int hashIndex = first | second<<7 | secondLast<<14 | last<<21;
             // returning the value
             return hashIndex;
         }
     
     public:
         // allowing the values to be accsessed
-        T & operator [](std::string string)
-        {
-            int hashIndex = Hash(string);
-            return table[hashIndex];
-        }
+        T & operator [](std::string string) {  return table[Hash(string)];  }
         
         // freeing the memory
         ~HashTable() {  free(table);  }
