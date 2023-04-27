@@ -20,7 +20,7 @@ class HashTable
         int Hash(std::string string)
         {
             // getting the first two and last two chars
-            unsigned int length = string.length() - 1;
+            int length = string.length() - 1;
             char first = string[0];
             char second = string[1];
             char secondLast = string[length - 1];
